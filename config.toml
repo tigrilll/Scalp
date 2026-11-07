@@ -1,0 +1,159 @@
+# ═══════════════════════════════════════════════════════════════
+# TradeScalp Configuration
+# ═══════════════════════════════════════════════════════════════
+
+[binance]
+api_key = ""
+api_secret = ""
+testnet = false
+
+[strategy]
+min_volume_24h = 30000000.0
+coins = ["HUSDT","HOMEUSDT","OPNUSDT","HEIUSDT","PORTALUSDT","MAGMAUSDT"]
+excluded_coins = [ "BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT", "DOGEUSDT", "PLAYUSDT", "KAIAUSDT", "AIAUSDT", "BILLUSDT", "OPENUSDT", "UBUSDT", "CLOUSDT", "ESPORTSUSDT",]
+side_filter = "ls"
+full_window_secs = 20
+spike_window_secs = 5
+spike_multiplier = 1.1
+price_move_mult = 2.0 
+min_natr = 0.6
+min_spike_move_pct = 2.0
+natr_window = "baseline"
+max_spike_age_ms = 0
+max_entry_distance_pct = 3.0
+entry_window_secs = 60
+min_pre_vol_mode = "fixed"
+min_pre_vol_usd = 20000.0
+min_pre_vol_lookback = 100
+min_pre_vol_multiplier = 0.9
+min_pre_vol_warmup = 20
+min_pre_vol_window = "baseline"
+scan_interval_ms = 100
+signal_cooldown_secs = 12
+
+[trading]
+max_positions = 3
+position_size_usd = 300.0
+leverage = 10
+max_margin_pct = 1000.0
+entry_price_mode = "current"
+entry_slippage_pct = 0.15
+max_entry_distance_pct = 0.05
+SLConstPercentOfEntry = 1.0
+sl_working_type = "CONTRACT_PRICE"
+stale_price_threshold_ms = 200
+tp_spike_percent = 0.0
+tp_working_type = "CONTRACT_PRICE"
+tp_limit_slippage_pct = 0.1
+tp_position_percent = 50.0
+trail_enabled = true
+trail_position_percent = 20.0
+trail_activation_pct = 2.0
+trail_callback_pct = 2.0
+qty_priority = "tp2"
+grace_period_ms = 5000
+pending_order_timeout_ms = 30000
+cleanup_interval_secs = 5
+reverse_signal_close_position = true
+
+[websocket]
+ping_interval_ms = 30000
+rest_fallback_interval_ms = 2000
+position_sync_interval_ms = 30000
+stale_threshold_secs = 10
+dead_threshold_secs = 30
+health_check_interval_ms = 1000
+dual_connection_enabled = false
+
+[reconnect]
+base_delay_ms = 500
+max_delay_ms = 30000
+multiplier = 2.0
+jitter_pct = 20
+alert_after_attempts = 5
+
+[telegram]
+enabled = true
+bot_token = ""
+chat_id = ""
+
+[log]
+level = "debug"
+file = "logs/tradescalp.log"
+
+[whale_exhaustion]
+enabled = false
+min_spikes_for_calibration = 5
+rolling_window_size = 100
+whale_dominance_percentile = 75.0
+fallback_whale_threshold = 0.15
+fallback_k = 0.2
+fallback_r_multi = 0.3
+fallback_r_solo = 0.2
+fallback_drift_factor = 1.5
+fallback_max_ratio = 5.0
+enable_per_spike_finetune = true
+enable_opposite_tick_trigger = true
+cold_start_use_global_defaults = true
+metrics_dump_interval_sec = 60
+
+[reversal_entry]
+enabled = false
+threshold_pct = 0.5
+
+[tape_exhaustion]
+enabled = true
+
+[market_mode]
+enabled = false
+tf_1m = "disable"
+tf_3m = "disable"
+tf_5m = "disable"
+tf_15m = "disable"
+tf_30m = "disable"
+tf_1h = "disable"
+tf_2h = "disable"
+tf_4h = "disable"
+tf_6h = "disable"
+tf_8h = "disable"
+tf_12h = "disable"
+tf_1d = "disable"
+tf_3d = "disable"
+tf_1w = "disable"
+tf_1M = "disable"
+
+[natr_filter]
+enabled = true
+interval = "5m"
+period = 14
+max_natr = 10.0
+
+[breakeven]
+enabled = false
+trigger_pct = 2.0
+
+[smart_profit_lock]
+enabled = false
+buffer = 0.4
+min_step_pct = 0.1
+cooldown_ms = 1000
+
+[stat_tp]
+enabled = true
+working_type = "CONTRACT_PRICE"
+limit_slippage_pct = 0.01
+
+[stat_tp.tp1]
+enabled = true
+threshold_pct = 2.0
+position_pct = 40.0
+
+[stat_tp.tp2]
+enabled = true
+threshold_pct = 3.0
+position_pct = 40.0
+
+[stat_tp.tp3]
+enabled = false
+threshold_pct = 1.5
+position_pct = 20.0

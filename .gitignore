@@ -1,0 +1,63 @@
+# Build artifacts
+/target/
+/target_trial/
+/backtester/target/
+/backtester/cache/
+/backtester/thresholds/
+
+# Logs
+*.log
+/logs/
+/Servlog/
+
+# Data
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+/candle_cache/
+data/binance_history/
+
+# Binaries
+*.exe
+tradescalp_binary
+tradescalp_binary_new
+*.tar.gz
+*.rar
+*.stackdump
+
+# Secrets
+.env
+*credentials*
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+~$*
+
+# OS
+.DS_Store
+Thumbs.db
+nul
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ruff_cache/
+
+# Claude Code state
+.claude/state/
+.claude/scratchpad/
+tg-agent/.claude/
+tg-agent/.scratchpad/
+backtester/.claude/
+
+# Temp / Large
+*.tmp
+*.bak
+*.pkl
+*.pkl.checkpoint

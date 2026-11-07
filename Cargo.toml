@@ -1,0 +1,98 @@
+[package]
+name = "tradescalp"
+version = "0.1.0"
+edition = "2021"
+authors = ["TradeScalp"]
+description = "High-performance scalping bot for Binance Futures"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full", "signal"] }
+
+# WebSocket
+tokio-tungstenite = { version = "0.24", features = ["native-tls"] }
+futures-util = "0.3"
+
+# HTTP client
+reqwest = { version = "0.12", features = ["json", "native-tls"] }
+
+# JSON
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Config
+toml = "0.8"
+clap = { version = "4", features = ["derive"] }
+
+# Logging (non-blocking)
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+tracing-appender = "0.2"
+
+# Crypto (Binance API signing)
+hmac = "0.12"
+sha2 = "0.10"
+hex = "0.4"
+
+# Utils
+chrono = { version = "0.4", features = ["serde"] }
+thiserror = "2"
+anyhow = "1"
+rand = "0.8"
+url = "2"
+parking_lot = "0.12"
+lazy_static = "1.4"
+
+# SQLite for spike logging
+rusqlite = { version = "0.31", features = ["bundled"] }
+
+# TCP keepalive
+socket2 = "0.5"
+
+# TLS for manual connection
+native-tls = "0.2"
+tokio-native-tls = "0.3"
+
+# Parallel processing (for backtest)
+rayon = "1.8"
+
+[[bin]]
+name = "backtest"
+path = "src/bin/backtest.rs"
+
+[[bin]]
+name = "backtest2"
+path = "src/bin/backtest2.rs"
+
+[[bin]]
+name = "query"
+path = "src/bin/query.rs"
+
+[[bin]]
+name = "test_volume_discrepancy"
+path = "src/bin/test_volume_discrepancy.rs"
+
+[[bin]]
+name = "test_volume_3min"
+path = "src/bin/test_volume_3min.rs"
+
+[[bin]]
+name = "test_volume_prod"
+path = "src/bin/test_volume_prod.rs"
+
+[[bin]]
+name = "query_volume"
+path = "src/bin/query_volume.rs"
+
+[[bin]]
+name = "compare_kline_agg"
+path = "src/bin/compare_kline_agg.rs"
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
